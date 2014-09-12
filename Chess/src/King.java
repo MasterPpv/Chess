@@ -26,5 +26,13 @@
  *
  */
 public class King extends Piece {
-
+	public boolean can_move() {
+		return false;
+	}
+	public boolean can_move_to(Tile destination) {
+		return false;
+	}
+	public boolean move(Tile destination) {
+		return false;
+	}
 }
