@@ -8,7 +8,7 @@
  * @author Priten Vora
  *
  */
-public class Tile extends Board {
+public class Tile {
 
 	private final int x;			// Horizontal coordinate of the tile
 	private final int y;			// Vertical coordinate of the tile
@@ -19,7 +19,7 @@ public class Tile extends Board {
 	/**
 	 * Constructor for the tile. When created, each tile must be
 	 * given an x and y value and a name corresponding to a tile
-	 * in proper chess notation, like "A6" or "H1".
+	 * in proper chess notation, like "a6" or "h1".
 	 * 
 	 * @param tile_x The x-coordinate value of the new tile.
 	 * @param tile_y The y-coordinate value of the new tile.
@@ -82,7 +82,7 @@ public class Tile extends Board {
 
 	/**
 	 * Returns the name corresponding to the tile in proper chess
-	 * notation, like "A6" or "H1".
+	 * notation, like "a6" or "h1".
 	 * 
 	 * @return The name of the tile in chess notation.
 	 */
