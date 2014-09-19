@@ -10,7 +10,7 @@
  */
 public abstract class Piece {
 
-	private boolean color;			// Color of the piece - true = white & false = black
+	private Color color;			// Color of the piece - true = white & false = black
 	private Tile location;			// Current location of the piece on the board
 
 	/**
@@ -27,24 +27,26 @@ public abstract class Piece {
 	 * 
 	 * @return True if the piece is white; false if it is black.
 	 */
-	public boolean get_color() {
+	public Color get_color() {
 		return color;
 	}
 
 	/**
 	 * Returns whether the piece has any legal moves or not.
 	 * 
+	 * @param board The board with all tiles present and any pieces currently in play.
 	 * @return True if the piece has legal moves available; false otherwise.
 	 */
-	public abstract boolean can_move();
+	public abstract boolean can_move(Board board);
 
 	/**
 	 * Returns whether or not the piece can move to the tile in question.
 	 * 
 	 * @param destination The tile the piece wants to move to.
+	 * @param board The board with all tiles present and any pieces currently in play.
 	 * @return True if the piece can move to this tile; false otherwise.
 	 */
-	public abstract boolean can_move_to(Tile destination);
+	public abstract boolean can_move_to(Tile destination, Board board);
 
 	/**
 	 * Moves the piece to the destination tile.
@@ -54,4 +56,18 @@ public abstract class Piece {
 	 */
 	public abstract boolean move(Tile destination);
 
+	/**
+	 * Evaluates the current position of the piece on the board and
+	 * returns an array of all the tiles that it might be possible for
+	 * the piece to move to. NOTE: this is NOT the list of all LEGAL
+	 * moves available to the piece - this is the list of every move
+	 * that COULD be legal for the piece given its current location on
+	 * the board. This list must be checked with the current condition
+	 * of the board and other pieces to determine the list of all the
+	 * moves the piece can actually legally make.
+	 * 
+	 * @param board The board with all tiles present and any pieces currently in play.
+	 * @return A list of all possible (but not necessarily legal) moves for the piece.
+	 */
+	public abstract Tile[] potential_moves(Board board);
 }

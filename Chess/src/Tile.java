@@ -10,25 +10,23 @@
  */
 public class Tile {
 
-	private final int x;			// Horizontal coordinate of the tile
-	private final int y;			// Vertical coordinate of the tile
-	private final boolean color;	// Color of the tile (true = white & false = black)
-	private final String name;		// Name of the tile in chess notation
-	private Piece current_piece;	// Which piece is currently on the tile
+	private final Location location;	// Location of the tile on the board
+	private final Color color;			// Color of the tile (WHITE or BLACK)
+	private final String name;			// Name of the tile in chess notation
+	private Piece current_piece;		// Which piece is currently on the tile
 
 	/**
 	 * Constructor for the tile. When created, each tile must be
 	 * given an x and y value and a name corresponding to a tile
 	 * in proper chess notation, like "a6" or "h1".
 	 * 
-	 * @param tile_x The x-coordinate value of the new tile.
+	 * @param tile_location The location of the new tile on the board.
 	 * @param tile_y The y-coordinate value of the new tile.
-	 * @param tile_color The color of the new tile (true = white & false = black).
+	 * @param tile_color The color of the new tile (either WHITE or BLACK).
 	 * @param tile_name The proper chess notation name of the new tile.
 	 */
-	public Tile(int tile_x, int tile_y, boolean tile_color, String tile_name) {
-		x = tile_x;
-		y = tile_y;
+	public Tile(Location tile_location, Color tile_color, String tile_name) {
+		location = tile_location;
 		color = tile_color;
 		name = tile_name;
 		current_piece = null;
@@ -54,29 +52,20 @@ public class Tile {
 	}
 
 	/**
-	 * Returns the horizontal coordinate of the tile on the board.
+	 * Returns the location of the tile on the board.
 	 * 
 	 * @return The horizontal coordinate of the tile.
 	 */
-	public int get_x() {
-		return x;
-	}
-
-	/**
-	 * Returns the vertical coordinate of the tile on the board.
-	 * 
-	 * @return The vertical coordinate of the tile.
-	 */
-	public int get_y() {
-		return y;
+	public Location get_location() {
+		return location;
 	}
 
 	/**
 	 * Returns the color of the tile.
 	 * 
-	 * @return True if the tile is white; false if it is black.
+	 * @return Either WHITE or BLACK.
 	 */
-	public boolean get_color() {
+	public Color get_color() {
 		return color;
 	}
 
