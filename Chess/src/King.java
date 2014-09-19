@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 /**
  * A specific type of Piece corresponding to the King piece in chess.
  * It can only move one square in any direction. It is also the most
@@ -26,12 +27,18 @@
  *
  */
 public class King extends Piece {
-	public boolean can_move(Board board) {
-		return false;
-	}
+
+	/**
+	 * Returns whether or not the king can move to the tile in question.
+	 * 
+	 * @param destination The tile the king wants to move to.
+	 * @param board The board with all tiles present and any pieces currently in play.
+	 * @return True if the king can move to this tile; false otherwise.
+	 */
 	public boolean can_move_to(Tile destination, Board board) {
 		return false;
 	}
+
 	public boolean move(Tile destination) {
 		return false;
 	}
@@ -49,7 +56,7 @@ public class King extends Piece {
 	 * @param board The board with all tiles present and any pieces currently in play.
 	 * @return A list of all possible (but not necessarily legal) moves for the piece.
 	 */
-	public Tile[] potential_moves(Board board){
-		return new Tile[0];
+	public ArrayList<Tile> potential_moves(Board board) {
+		return new ArrayList<Tile>();
 	}
 }

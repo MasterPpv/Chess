@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 /**
  * A specific type of Piece corresponding to the Pawn piece in chess. It
  * can only move forward, and is the unit by which the value of all other
@@ -21,14 +22,27 @@
  *
  */
 public class Pawn extends Piece {
-	public boolean can_move(Board board) {
-		return false;
+
+	private boolean first_advance;
+
+	public Pawn() {
+		first_advance = true;
 	}
+
+	/**
+	 * Returns whether or not the pawn can move to the tile in question.
+	 * 
+	 * @param destination The tile the pawn wants to move to.
+	 * @param board The board with all tiles present and any pieces currently in play.
+	 * @return True if the pawn can move to this tile; false otherwise.
+	 */
 	public boolean can_move_to(Tile destination, Board board) {
 		return false;
 	}
+
 	public boolean move(Tile destination) {
-		return false;
+		first_advance = false;
+		return first_advance;
 	}
 
 	/**
@@ -44,7 +58,7 @@ public class Pawn extends Piece {
 	 * @param board The board with all tiles present and any pieces currently in play.
 	 * @return A list of all possible (but not necessarily legal) moves for the piece.
 	 */
-	public Tile[] potential_moves(Board board){
-		return new Tile[0];
+	public ArrayList<Tile> potential_moves(Board board) {
+		return new ArrayList<Tile>();
 	}
 }

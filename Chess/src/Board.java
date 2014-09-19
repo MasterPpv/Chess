@@ -7,8 +7,10 @@
  */
 public class Board {
 
-	Tile[][] board; // A list of all the tiles that make up the board.
-	boolean is_in_check; // Whether or not there is a king currently in check.
+	protected Tile[][] tiles; 		// A list of all the tiles that make up the board.
+	protected boolean is_in_check;	// Whether or not there is a king currently in check.
+	protected final int width;		// The width of the board (in number of tiles).
+	protected final int height;		// The height of the board (in number of tiles).
 
 	/**
 	 * Gets the width and height of the board to be made and readies a
@@ -17,9 +19,11 @@ public class Board {
 	 * @param width The width of the board in terms of number of tiles.
 	 * @param height The height of the board in terms of number of tiles.
 	 */
-	public Board(int width, int height) {
-		board = new Tile[width][height];
-		this.initialize_tiles(width, height);
+	public Board(int board_width, int board_height) {
+		tiles = new Tile[board_width][board_height];
+		this.initialize_tiles(board_width, board_height);
+		width = board_width;
+		height = board_height;
 		is_in_check = false;
 	}
 
@@ -37,7 +41,7 @@ public class Board {
 		for(int x = 0; x < width; x++) {
 			for(int y = 0; y < height; y++) {
 				Location new_tile = new Location(x, y);
-				board[width][height] = new Tile(new_tile, color, new_tile.toString());
+				tiles[width][height] = new Tile(new_tile, color, new_tile.toString());
 				color = color.other();
 			}
 		}

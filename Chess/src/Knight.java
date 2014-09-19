@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 /**
  * A specific type of Piece corresponding to the Knight piece in chess.
  * It has a strange movement pattern - it can choose between moving one
@@ -10,12 +11,22 @@
  *
  */
 public class Knight extends Piece {
-	public boolean can_move(Board board) {
-		return false;
-	}
+
+	/**
+	 * Returns whether or not the knight can move to the tile in question.
+	 * 
+	 * @param destination The tile the knight wants to move to.
+	 * @param board The board with all tiles present and any pieces currently in play.
+	 * @return True if the knight can move to this tile; false otherwise.
+	 */
 	public boolean can_move_to(Tile destination, Board board) {
-		return false;
+		Piece dest_piece = destination.get_piece();
+		if(dest_piece != null && dest_piece.color == this.color) {
+			return false;
+		}
+		return true;
 	}
+
 	public boolean move(Tile destination) {
 		return false;
 	}
@@ -33,7 +44,7 @@ public class Knight extends Piece {
 	 * @param board The board with all tiles present and any pieces currently in play.
 	 * @return A list of all possible (but not necessarily legal) moves for the piece.
 	 */
-	public Tile[] potential_moves(Board board){
-		return new Tile[0];
+	public ArrayList<Tile> potential_moves(Board board) {
+		return new ArrayList<Tile>();
 	}
 }

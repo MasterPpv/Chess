@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 /**
  * The basic representation of a piece in chess. Each piece should know
  * its location on the board, as well as what squares it can legally move
@@ -10,8 +11,8 @@
  */
 public abstract class Piece {
 
-	private Color color;			// Color of the piece - true = white & false = black
-	private Tile location;			// Current location of the piece on the board
+	protected Color color;			// Color of the piece - true = white & false = black
+	protected Tile current_tile;	// Current location of the piece on the board
 
 	/**
 	 * Returns which tile of the board the piece is on.
@@ -19,7 +20,7 @@ public abstract class Piece {
 	 * @return The tile which the piece is on.
 	 */
 	public Tile get_location() {
-		return location;
+		return current_tile;
 	}
 
 	/**
@@ -32,12 +33,30 @@ public abstract class Piece {
 	}
 
 	/**
-	 * Returns whether the piece has any legal moves or not.
+	 * Returns whether the piece has any legal moves or not - NOT including
+	 * whether or not the move will result in the king being in check. The
+	 * board will get the result from this and determine whether or not the
+	 * movement of the piece will result in the king being in check, and is
+	 * able to override this result if the piece's movement would also result
+	 * in the player's own king being endangered.
 	 * 
 	 * @param board The board with all tiles present and any pieces currently in play.
 	 * @return True if the piece has legal moves available; false otherwise.
 	 */
-	public abstract boolean can_move(Board board);
+	public boolean can_move(Board board) {
+		// Assume that the piece cannot move.
+		boolean movable = false;
+
+		// Determine if any of the piece's natural moves are actually currently possible.
+		ArrayList<Tile> possible_moves = this.potential_moves(board);
+		for(int i = 0; i < possible_moves.size(); i++) {
+			if(this.can_move_to(possible_moves.get(i), board)) {
+				movable = true;
+			}
+		}
+
+		return movable;
+	}
 
 	/**
 	 * Returns whether or not the piece can move to the tile in question.
@@ -69,5 +88,5 @@ public abstract class Piece {
 	 * @param board The board with all tiles present and any pieces currently in play.
 	 * @return A list of all possible (but not necessarily legal) moves for the piece.
 	 */
-	public abstract Tile[] potential_moves(Board board);
+	public abstract ArrayList<Tile> potential_moves(Board board);
 }
