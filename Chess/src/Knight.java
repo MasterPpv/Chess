@@ -14,6 +14,15 @@ import java.util.ArrayList;
 public class Knight extends Piece {
 
 	/**
+	 * Constructor for the knight. Gets and sets its color.
+	 * 
+	 * @param piece_color The color of the knight (either BLACK or WHITE).
+	 */
+	public Knight(Color piece_color) {
+		super(piece_color);
+	}
+
+	/**
 	 * Returns whether or not the knight can move to the tile in question.
 	 * 
 	 * @param destination The tile the knight wants to move to.

@@ -11,6 +11,15 @@ import java.util.ArrayList;
 public class Queen extends Piece {
 
 	/**
+	 * Constructor for the queen. Gets and sets its color.
+	 * 
+	 * @param piece_color The color of the queen (either BLACK or WHITE).
+	 */
+	public Queen(Color piece_color) {
+		super(piece_color);
+	}
+
+	/**
 	 * Returns whether or not the queen can move to the tile in question.
 	 * 
 	 * @param destination The tile the queen wants to move to.

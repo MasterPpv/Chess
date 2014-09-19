@@ -24,9 +24,16 @@ import java.util.ArrayList;
  */
 public class Pawn extends Piece {
 
-	private boolean first_advance;
+	private boolean first_advance;	// Whether or not this pawn is advancing for the first time.
 
-	public Pawn() {
+	/**
+	 * Constructor for the pawn. Gets and sets its color and whether or
+	 * not this pawn has advanced forward yet.
+	 * 
+	 * @param piece_color The color of the pawn (either BLACK or WHITE).
+	 */
+	public Pawn(Color piece_color) {
+		super(piece_color);
 		first_advance = true;
 	}
 

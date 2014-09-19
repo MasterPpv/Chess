@@ -13,6 +13,15 @@ import java.util.ArrayList;
 public class Rook extends Piece {
 
 	/**
+	 * Constructor for the rook. Gets and sets its color.
+	 * 
+	 * @param piece_color The color of the rook (either BLACK or WHITE).
+	 */
+	public Rook(Color piece_color) {
+		super(piece_color);
+	}
+
+	/**
 	 * Returns whether or not the rook can move to the tile in question.
 	 * 
 	 * @param destination The tile the rook wants to move to.

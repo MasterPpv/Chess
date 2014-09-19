@@ -33,7 +33,8 @@ public class Tile {
 	}
 
 	/**
-	 * Sets the tile to hold the given piece.
+	 * Sets the tile to hold the given piece. The user must also set
+	 * the piece so that it knows that it is on this tile.
 	 * 
 	 * @param new_piece The piece that is now occupying the tile.
 	 */

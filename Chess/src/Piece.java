@@ -12,9 +12,18 @@ import java.util.ArrayList;
  */
 public abstract class Piece {
 
-	protected Color color;			// Color of the piece - true = white & false = black
-	protected Tile current_tile;	// Current location of the piece on the board
+	protected final Color color;	// Color of the piece (either WHITE or BLACK).
+	protected Tile current_tile;	// Current location of the piece on the board.
 
+	/**
+	 * Constructor for the piece. Gets and sets its color.
+	 * 
+	 * @param piece_color The color of the piece (either WHITE or BLACK).
+	 */
+	public Piece(Color piece_color) {
+		color = piece_color;
+	}
+	
 	/**
 	 * Returns which tile of the board the piece is on.
 	 * 

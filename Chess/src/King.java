@@ -30,6 +30,15 @@ import java.util.ArrayList;
 public class King extends Piece {
 
 	/**
+	 * Constructor for the king. Gets and sets its color.
+	 * 
+	 * @param piece_color The color of the king (either BLACK or WHITE).
+	 */
+	public King(Color piece_color) {
+		super(piece_color);
+	}
+
+	/**
 	 * Returns whether or not the king can move to the tile in question.
 	 * 
 	 * @param destination The tile the king wants to move to.

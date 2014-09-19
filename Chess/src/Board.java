@@ -25,6 +25,7 @@ public class Board {
 	public Board(int board_width, int board_height) {
 		tiles = new Tile[board_width][board_height];
 		this.initialize_tiles(board_width, board_height);
+		this.initialize_pieces();
 		width = board_width;
 		height = board_height;
 		is_in_check = false;
@@ -47,6 +48,18 @@ public class Board {
 				tiles[width][height] = new Tile(new_tile, color, new_tile.toString());
 				color = color.other();
 			}
+		}
+	}
+
+	
+	private void initialize_pieces() {
+		Color color = Color.WHITE;
+		for(int x = 0; x < width; x++) {
+			Pawn white_pawn = new Pawn(color);
+			tiles[width][1].set_piece(white_pawn);
+			color = color.other();
+			Pawn black_pawn = new Pawn(color);
+			tiles[width][6].set_piece(black_pawn);
 		}
 	}
 }

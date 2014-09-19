@@ -11,6 +11,15 @@ import java.util.ArrayList;
 public class Bishop extends Piece {
 
 	/**
+	 * Constructor for the bishop. Gets and sets its color.
+	 * 
+	 * @param piece_color The color of the bishop (either BLACK or WHITE).
+	 */
+	public Bishop(Color piece_color) {
+		super(piece_color);
+	}
+
+	/**
 	 * Returns whether or not the bishop can move to the tile in question.
 	 * 
 	 * @param destination The tile the bishop wants to move to.
