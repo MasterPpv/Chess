@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+
 /**
  * A specific type of Piece corresponding to the Bishop piece in chess.
  * It can only move diagonally, is worth approximately 3 pawns, and cannot

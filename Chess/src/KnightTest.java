@@ -2,7 +2,7 @@ import static org.junit.Assert.*;
 
 import org.junit.Test;
 
-public class RookTest {
+public class KnightTest {
 
 	@Test
 	public void test_can_move_to() {
@@ -23,4 +23,5 @@ public class RookTest {
 	public void test_can_move() {
 		fail("Not yet implemented");
 	}
+
 }

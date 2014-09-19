@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+
 /**
  * A specific type of Piece corresponding to the Rook piece in chess. It
  * can only move horizontally and vertically and cannot pass through other

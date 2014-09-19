@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+
 /**
  * The basic representation of a piece in chess. Each piece should know
  * its location on the board, as well as what squares it can legally move

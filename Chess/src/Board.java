@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+
 /**
  * A representation of a chess board. Made up of ranks and files of tiles,
  * each of which may or may not be occupied by a piece.
@@ -7,10 +9,11 @@
  */
 public class Board {
 
-	protected Tile[][] tiles; 		// A list of all the tiles that make up the board.
-	protected boolean is_in_check;	// Whether or not there is a king currently in check.
-	protected final int width;		// The width of the board (in number of tiles).
-	protected final int height;		// The height of the board (in number of tiles).
+	protected Tile[][] tiles; 			// A list of all the tiles that make up the board.
+	protected ArrayList<Piece> pieces;	// A list of all the pieces currently on the board.
+	protected boolean is_in_check;		// Whether or not there is a king currently in check.
+	protected final int width;			// The width of the board (in number of tiles).
+	protected final int height;			// The height of the board (in number of tiles).
 
 	/**
 	 * Gets the width and height of the board to be made and readies a

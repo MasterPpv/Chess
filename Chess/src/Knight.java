@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+
 /**
  * A specific type of Piece corresponding to the Knight piece in chess.
  * It has a strange movement pattern - it can choose between moving one

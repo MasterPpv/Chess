@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+
 /**
  * A specific type of Piece corresponding to the Queen piece in chess. It can only move
  * as many spaces as it wants in any direction it wants, but cannot pass through other

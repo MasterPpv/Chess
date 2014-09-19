@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+
 /**
  * A specific type of Piece corresponding to the King piece in chess.
  * It can only move one square in any direction. It is also the most
