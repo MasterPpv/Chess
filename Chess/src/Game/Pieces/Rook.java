@@ -32,6 +32,11 @@ public class Rook extends Piece {
 	 */
 	public boolean canMoveTo(Tile destination, Board board) {
 
+		// Check if the destination tile is the same as your current location.
+		if(destination == currentTile) {
+			return false;
+		}
+
 		// Check if the destination tile already has one of your own pieces.
 		Piece destPiece = destination.getPiece();
 		if(destPiece != null && destPiece.getColor() == this.getColor()) {
@@ -43,8 +48,6 @@ public class Rook extends Piece {
 		Location myLocation = currentTile.getLocation();
 		Location destLocation = destination.getLocation();
 		Tile[][] currentBoard = board.getTiles();
-
-		// Set up variables to make next part easier
 		int myX = myLocation.getX();
 		int myY = myLocation.getY();
 		int destX = destLocation.getX();

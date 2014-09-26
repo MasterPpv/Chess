@@ -1,5 +1,6 @@
 package Game.Pieces;
 import java.util.ArrayList;
+
 import Game.*;
 /**
  * A specific type of Piece corresponding to the Knight piece in chess.
@@ -56,6 +57,42 @@ public class Knight extends Piece {
 	 * @return A list of all possible (but not necessarily legal) moves for the piece.
 	 */
 	public ArrayList<Tile> potentialMoves(Board board) {
-		return new ArrayList<Tile>();
+
+		// Set up the necessary variables.
+		Location myLocation = currentTile.getLocation();
+		Tile[][] currentBoard = board.getTiles();
+		ArrayList<Tile> moves = new ArrayList<Tile>();
+		int myX = myLocation.getX();
+		int myY = myLocation.getY();
+		int width = board.getWidth();
+		int height = board.getHeight();
+
+		// Add each of the knight's moves individually.
+		if((myX + 2) < width && (myY + 1) < height) {
+			moves.add(currentBoard[myX + 2][myY + 1]);
+		}
+		if((myX + 1) < width && (myY + 2) < height) {
+			moves.add(currentBoard[myX + 1][myY + 2]);
+		}
+		if((myX + 2) < width && (myY - 1) >= 0) {
+			moves.add(currentBoard[myX + 2][myY - 1]);
+		}
+		if((myX + 1) < width && (myY - 2) >= 0) {
+			moves.add(currentBoard[myX + 1][myY - 2]);
+		}
+		if((myX - 2) >= 0 && (myY + 1) < height) {
+			moves.add(currentBoard[myX - 2][myY + 1]);
+		}
+		if((myX - 1) >= 0 && (myY + 2) < height) {
+			moves.add(currentBoard[myX - 1][myY + 2]);
+		}
+		if((myX - 2) >= 0 && (myY - 1) >= 0) {
+			moves.add(currentBoard[myX - 2][myY - 1]);
+		}
+		if((myX - 1) >= 0 && (myY - 2) >= 0) {
+			moves.add(currentBoard[myX - 1][myY - 2]);
+		}
+
+		return moves;
 	}
 }
