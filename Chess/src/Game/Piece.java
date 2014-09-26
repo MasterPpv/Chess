@@ -1,5 +1,5 @@
+package Game;
 import java.util.ArrayList;
-
 /**
  * The basic representation of a piece in chess. Each piece should know
  * its location on the board, as well as what squares it can legally move
@@ -13,15 +13,15 @@ import java.util.ArrayList;
 public abstract class Piece {
 
 	protected final Color color;	// Color of the piece (either WHITE or BLACK).
-	protected Tile current_tile;	// Current location of the piece on the board.
+	protected Tile currentTile;	// Current location of the piece on the board.
 
 	/**
 	 * Constructor for the piece. Gets and sets its color.
 	 * 
-	 * @param piece_color The color of the piece (either WHITE or BLACK).
+	 * @param pieceColor The color of the piece (either WHITE or BLACK).
 	 */
-	public Piece(Color piece_color) {
-		color = piece_color;
+	public Piece(Color pieceColor) {
+		color = pieceColor;
 	}
 	
 	/**
@@ -29,8 +29,8 @@ public abstract class Piece {
 	 * 
 	 * @return The tile which the piece is on.
 	 */
-	public Tile get_location() {
-		return current_tile;
+	public Tile getLocation() {
+		return currentTile;
 	}
 
 	/**
@@ -38,7 +38,7 @@ public abstract class Piece {
 	 * 
 	 * @return True if the piece is white; false if it is black.
 	 */
-	public Color get_color() {
+	public Color getColor() {
 		return color;
 	}
 
@@ -53,14 +53,14 @@ public abstract class Piece {
 	 * @param board The board with all tiles present and any pieces currently in play.
 	 * @return True if the piece has legal moves available; false otherwise.
 	 */
-	public boolean can_move(Board board) {
+	public boolean canMove(Board board) {
 		// Assume that the piece cannot move.
 		boolean movable = false;
 
 		// Determine if any of the piece's natural moves are actually currently possible.
-		ArrayList<Tile> possible_moves = this.potential_moves(board);
-		for(int i = 0; i < possible_moves.size(); i++) {
-			if(this.can_move_to(possible_moves.get(i), board)) {
+		ArrayList<Tile> possibleMoves = this.potentialMoves(board);
+		for(int i = 0; i < possibleMoves.size(); i++) {
+			if(this.canMoveTo(possibleMoves.get(i), board)) {
 				movable = true;
 			}
 		}
@@ -75,7 +75,7 @@ public abstract class Piece {
 	 * @param board The board with all tiles present and any pieces currently in play.
 	 * @return True if the piece can move to this tile; false otherwise.
 	 */
-	public abstract boolean can_move_to(Tile destination, Board board);
+	public abstract boolean canMoveTo(Tile destination, Board board);
 
 	/**
 	 * Moves the piece to the destination tile.
@@ -98,5 +98,5 @@ public abstract class Piece {
 	 * @param board The board with all tiles present and any pieces currently in play.
 	 * @return A list of all possible (but not necessarily legal) moves for the piece.
 	 */
-	public abstract ArrayList<Tile> potential_moves(Board board);
+	public abstract ArrayList<Tile> potentialMoves(Board board);
 }

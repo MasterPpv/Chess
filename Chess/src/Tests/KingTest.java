@@ -1,26 +1,30 @@
+package Tests;
 import static org.junit.Assert.*;
-
 import org.junit.Test;
-
-public class KnightTest {
+/**
+ * 
+ * @author Priten Vora
+ *
+ */
+public class KingTest {
 
 	@Test
-	public void test_can_move_to() {
+	public void testCanMoveTo() {
 		fail("Not yet implemented");
 	}
 
 	@Test
-	public void test_move() {
+	public void testMove() {
 		fail("Not yet implemented");
 	}
 
 	@Test
-	public void test_potential_moves() {
+	public void testPotentialMoves() {
 		fail("Not yet implemented");
 	}
 
 	@Test
-	public void test_can_move() {
+	public void testCanMove() {
 		fail("Not yet implemented");
 	}
 

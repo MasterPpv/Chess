@@ -1,5 +1,6 @@
+package Game.Pieces;
 import java.util.ArrayList;
-
+import Game.*;
 /**
  * A specific type of Piece corresponding to the Pawn piece in chess. It
  * can only move forward, and is the unit by which the value of all other
@@ -24,17 +25,17 @@ import java.util.ArrayList;
  */
 public class Pawn extends Piece {
 
-	private boolean first_advance;	// Whether or not this pawn is advancing for the first time.
+	private boolean firstAdvance;	// Whether or not this pawn is advancing for the first time.
 
 	/**
 	 * Constructor for the pawn. Gets and sets its color and whether or
 	 * not this pawn has advanced forward yet.
 	 * 
-	 * @param piece_color The color of the pawn (either BLACK or WHITE).
+	 * @param pieceColor The color of the pawn (either BLACK or WHITE).
 	 */
-	public Pawn(Color piece_color) {
-		super(piece_color);
-		first_advance = true;
+	public Pawn(Color pieceColor) {
+		super(pieceColor);
+		firstAdvance = true;
 	}
 
 	/**
@@ -44,13 +45,13 @@ public class Pawn extends Piece {
 	 * @param board The board with all tiles present and any pieces currently in play.
 	 * @return True if the pawn can move to this tile; false otherwise.
 	 */
-	public boolean can_move_to(Tile destination, Board board) {
+	public boolean canMoveTo(Tile destination, Board board) {
 		return false;
 	}
 
 	public boolean move(Tile destination) {
-		first_advance = false;
-		return first_advance;
+		firstAdvance = false;
+		return firstAdvance;
 	}
 
 	/**
@@ -66,7 +67,7 @@ public class Pawn extends Piece {
 	 * @param board The board with all tiles present and any pieces currently in play.
 	 * @return A list of all possible (but not necessarily legal) moves for the piece.
 	 */
-	public ArrayList<Tile> potential_moves(Board board) {
+	public ArrayList<Tile> potentialMoves(Board board) {
 		return new ArrayList<Tile>();
 	}
 }

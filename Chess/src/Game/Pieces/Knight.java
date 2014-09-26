@@ -1,5 +1,6 @@
+package Game.Pieces;
 import java.util.ArrayList;
-
+import Game.*;
 /**
  * A specific type of Piece corresponding to the Knight piece in chess.
  * It has a strange movement pattern - it can choose between moving one
@@ -16,10 +17,10 @@ public class Knight extends Piece {
 	/**
 	 * Constructor for the knight. Gets and sets its color.
 	 * 
-	 * @param piece_color The color of the knight (either BLACK or WHITE).
+	 * @param pieceColor The color of the knight (either BLACK or WHITE).
 	 */
-	public Knight(Color piece_color) {
-		super(piece_color);
+	public Knight(Color pieceColor) {
+		super(pieceColor);
 	}
 
 	/**
@@ -29,9 +30,9 @@ public class Knight extends Piece {
 	 * @param board The board with all tiles present and any pieces currently in play.
 	 * @return True if the knight can move to this tile; false otherwise.
 	 */
-	public boolean can_move_to(Tile destination, Board board) {
-		Piece dest_piece = destination.get_piece();
-		if(dest_piece != null && dest_piece.color == this.color) {
+	public boolean canMoveTo(Tile destination, Board board) {
+		Piece destPiece = destination.getPiece();
+		if(destPiece != null && destPiece.getColor() == this.getColor()) {
 			return false;
 		}
 		return true;
@@ -54,7 +55,7 @@ public class Knight extends Piece {
 	 * @param board The board with all tiles present and any pieces currently in play.
 	 * @return A list of all possible (but not necessarily legal) moves for the piece.
 	 */
-	public ArrayList<Tile> potential_moves(Board board) {
+	public ArrayList<Tile> potentialMoves(Board board) {
 		return new ArrayList<Tile>();
 	}
 }

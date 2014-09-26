@@ -1,3 +1,4 @@
+package Game;
 /**
  * An enumerator that can be either WHITE or BLACK, corresponding
  * to the two possibilities for tile colors, player designations,

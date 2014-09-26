@@ -1,5 +1,6 @@
+package Game.Pieces;
 import java.util.ArrayList;
-
+import Game.*;
 /**
  * A specific type of Piece corresponding to the Bishop piece in chess.
  * It can only move diagonally, is worth approximately 3 pawns, and cannot
@@ -13,10 +14,10 @@ public class Bishop extends Piece {
 	/**
 	 * Constructor for the bishop. Gets and sets its color.
 	 * 
-	 * @param piece_color The color of the bishop (either BLACK or WHITE).
+	 * @param pieceColor The color of the bishop (either BLACK or WHITE).
 	 */
-	public Bishop(Color piece_color) {
-		super(piece_color);
+	public Bishop(Color pieceColor) {
+		super(pieceColor);
 	}
 
 	/**
@@ -26,7 +27,7 @@ public class Bishop extends Piece {
 	 * @param board The board with all tiles present and any pieces currently in play.
 	 * @return True if the bishop can move to this tile; false otherwise.
 	 */
-	public boolean can_move_to(Tile destination, Board board) {
+	public boolean canMoveTo(Tile destination, Board board) {
 		return false;
 	}
 
@@ -47,7 +48,7 @@ public class Bishop extends Piece {
 	 * @param board The board with all tiles present and any pieces currently in play.
 	 * @return A list of all possible (but not necessarily legal) moves for the piece.
 	 */
-	public ArrayList<Tile> potential_moves(Board board) {
+	public ArrayList<Tile> potentialMoves(Board board) {
 		return new ArrayList<Tile>();
 	}
 }

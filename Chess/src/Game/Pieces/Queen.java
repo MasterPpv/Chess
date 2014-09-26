@@ -1,5 +1,6 @@
+package Game.Pieces;
 import java.util.ArrayList;
-
+import Game.*;
 /**
  * A specific type of Piece corresponding to the Queen piece in chess. It can only move
  * as many spaces as it wants in any direction it wants, but cannot pass through other
@@ -13,10 +14,10 @@ public class Queen extends Piece {
 	/**
 	 * Constructor for the queen. Gets and sets its color.
 	 * 
-	 * @param piece_color The color of the queen (either BLACK or WHITE).
+	 * @param pieceColor The color of the queen (either BLACK or WHITE).
 	 */
-	public Queen(Color piece_color) {
-		super(piece_color);
+	public Queen(Color pieceColor) {
+		super(pieceColor);
 	}
 
 	/**
@@ -26,7 +27,7 @@ public class Queen extends Piece {
 	 * @param board The board with all tiles present and any pieces currently in play.
 	 * @return True if the queen can move to this tile; false otherwise.
 	 */
-	public boolean can_move_to(Tile destination, Board board) {
+	public boolean canMoveTo(Tile destination, Board board) {
 		return false;
 	}
 
@@ -47,23 +48,28 @@ public class Queen extends Piece {
 	 * @param board The board with all tiles present and any pieces currently in play.
 	 * @return A list of all possible (but not necessarily legal) moves for the piece.
 	 */
-	public ArrayList<Tile> potential_moves(Board board) {
+	public ArrayList<Tile> potentialMoves(Board board) {
+
 		// Set up the necessary variables.
-		Location my_location = current_tile.get_location();
-		Tile[][] current_board = board.tiles;
+		Location myLocation = currentTile.getLocation();
+		Tile[][] currentBoard = board.getTiles();
 		ArrayList<Tile> moves = new ArrayList<Tile>();
+		int myX = myLocation.getX();
+		int myY = myLocation.getY();
+		int width = board.getWidth();
+		int height = board.getHeight();
 
 		// Add all squares in the same rank besides the one we're on.
-		for(int i = 0; i < board.width; i++) {
-			if(i != my_location.x) {
-				moves.add(current_board[i][my_location.y]);
+		for(int i = 0; i < width; i++) {
+			if(i != myX) {
+				moves.add(currentBoard[i][myY]);
 			}
 		}
 
 		// Add all squares in the same file besides the one we're on.
-		for(int j = 0; j < board.width; j++) {
-			if(j != my_location.y) {
-				moves.add(current_board[my_location.x][j]);
+		for(int j = 0; j < height; j++) {
+			if(j != myY) {
+				moves.add(currentBoard[myX][j]);
 			}
 		}
 

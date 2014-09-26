@@ -1,4 +1,6 @@
+package Game.Pieces;
 import java.util.ArrayList;
+import Game.*;
 
 /**
  * A specific type of Piece corresponding to the Rook piece in chess. It
@@ -28,46 +30,52 @@ public class Rook extends Piece {
 	 * @param board The board with all tiles present and any pieces currently in play.
 	 * @return True if the rook can move to this tile; false otherwise.
 	 */
-	public boolean can_move_to(Tile destination, Board board) {
+	public boolean canMoveTo(Tile destination, Board board) {
 
 		// Check if the destination tile already has one of your own pieces.
-		Piece dest_piece = destination.get_piece();
-		if(dest_piece != null && dest_piece.color == this.color) {
+		Piece destPiece = destination.getPiece();
+		if(destPiece != null && destPiece.getColor() == this.getColor()) {
 			return false;
 		}
 
 		// Collect the necessary information and set up variables.
 		boolean movable = true;
-		Location my_location = current_tile.get_location();
-		Location dest_location = destination.get_location();
-		Tile[][] current_board = board.tiles;
+		Location myLocation = currentTile.getLocation();
+		Location destLocation = destination.getLocation();
+		Tile[][] currentBoard = board.getTiles();
+
+		// Set up variables to make next part easier
+		int myX = myLocation.getX();
+		int myY = myLocation.getY();
+		int destX = destLocation.getX();
+		int destY = destLocation.getY();
 
 		// Destination is in the same file but in a higher rank.
-		if(my_location.x == dest_location.x && my_location.y < dest_location.y) {
-			for(int i = (my_location.y + 1); i < dest_location.y; i++) {
-				Tile to_test = current_board[my_location.x][i];
-				movable = (to_test.get_piece() == null);
+		if(myX == destX && myY < destY) {
+			for(int i = (myY + 1); i < destY; i++) {
+				Tile toTest = currentBoard[myX][i];
+				movable = (toTest.getPiece() == null);
 			}
 		}
 		// Destination is in the same file but in a lower rank.
-		else if(my_location.x == dest_location.x && my_location.y > dest_location.y) {
-			for(int i = (my_location.y - 1); i > dest_location.y; i--) {
-				Tile to_test = current_board[my_location.x][i];
-				movable = (to_test.get_piece() == null);
+		else if(myX == destX && myY > destY) {
+			for(int i = (myY - 1); i > destY; i--) {
+				Tile toTest = currentBoard[myX][i];
+				movable = (toTest.getPiece() == null);
 			}
 		}
 		// Destination is in the same rank but in a higher file.
-		else if(my_location.y == dest_location.y && my_location.x < dest_location.x) {
-			for(int i = (my_location.x + 1); i < dest_location.x; i++) {
-				Tile to_test = current_board[i][my_location.y];
-				movable = (to_test.get_piece() == null);
+		else if(myY == destY && myX < destX) {
+			for(int i = (myX + 1); i < destX; i++) {
+				Tile toTest = currentBoard[i][myY];
+				movable = (toTest.getPiece() == null);
 			}
 		}
 		// Destination is in the same rank but in a lower file.
-		else if(my_location.y == dest_location.y && my_location.x > dest_location.x) {
-			for(int i = (my_location.x - 1); i > dest_location.x; i--) {
-				Tile to_test = current_board[i][my_location.y];
-				movable = (to_test.get_piece() == null);
+		else if(myY == destY && myX > destX) {
+			for(int i = (myX - 1); i > destX; i--) {
+				Tile toTest = currentBoard[i][myY];
+				movable = (toTest.getPiece() == null);
 			}
 		}
 		// Destination is some other tile on the board (can't move there).
@@ -95,24 +103,28 @@ public class Rook extends Piece {
 	 * @param board The board with all tiles present and any pieces currently in play.
 	 * @return A list of all possible (but not necessarily legal) moves for the piece.
 	 */
-	public ArrayList<Tile> potential_moves(Board board) {
+	public ArrayList<Tile> potentialMoves(Board board) {
 
 		// Set up the necessary variables.
-		Location my_location = current_tile.get_location();
-		Tile[][] current_board = board.tiles;
+		Location myLocation = currentTile.getLocation();
+		Tile[][] currentBoard = board.getTiles();
 		ArrayList<Tile> moves = new ArrayList<Tile>();
+		int myX = myLocation.getX();
+		int myY = myLocation.getY();
+		int width = board.getWidth();
+		int height = board.getHeight();
 
 		// Add all squares in the same rank besides the one we're on.
-		for(int i = 0; i < board.width; i++) {
-			if(i != my_location.x) {
-				moves.add(current_board[i][my_location.y]);
+		for(int i = 0; i < width; i++) {
+			if(i != myX) {
+				moves.add(currentBoard[i][myY]);
 			}
 		}
 
 		// Add all squares in the same file besides the one we're on.
-		for(int j = 0; j < board.width; j++) {
-			if(j != my_location.y) {
-				moves.add(current_board[my_location.x][j]);
+		for(int j = 0; j < height; j++) {
+			if(j != myY) {
+				moves.add(currentBoard[myX][j]);
 			}
 		}
 

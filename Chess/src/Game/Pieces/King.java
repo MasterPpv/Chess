@@ -1,5 +1,6 @@
+package Game.Pieces;
 import java.util.ArrayList;
-
+import Game.*;
 /**
  * A specific type of Piece corresponding to the King piece in chess.
  * It can only move one square in any direction. It is also the most
@@ -32,10 +33,10 @@ public class King extends Piece {
 	/**
 	 * Constructor for the king. Gets and sets its color.
 	 * 
-	 * @param piece_color The color of the king (either BLACK or WHITE).
+	 * @param pieceColor The color of the king (either BLACK or WHITE).
 	 */
-	public King(Color piece_color) {
-		super(piece_color);
+	public King(Color pieceColor) {
+		super(pieceColor);
 	}
 
 	/**
@@ -45,7 +46,7 @@ public class King extends Piece {
 	 * @param board The board with all tiles present and any pieces currently in play.
 	 * @return True if the king can move to this tile; false otherwise.
 	 */
-	public boolean can_move_to(Tile destination, Board board) {
+	public boolean canMoveTo(Tile destination, Board board) {
 		return false;
 	}
 
@@ -66,7 +67,7 @@ public class King extends Piece {
 	 * @param board The board with all tiles present and any pieces currently in play.
 	 * @return A list of all possible (but not necessarily legal) moves for the piece.
 	 */
-	public ArrayList<Tile> potential_moves(Board board) {
+	public ArrayList<Tile> potentialMoves(Board board) {
 		return new ArrayList<Tile>();
 	}
 }

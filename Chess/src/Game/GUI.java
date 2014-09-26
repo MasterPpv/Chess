@@ -1,8 +1,9 @@
+package Game;
+import Game.Pieces.*;
 import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JMenu;
@@ -11,10 +12,19 @@ import javax.swing.JMenuItem;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.UIManager;
-
+/**
+ * The graphical user interface for the game. Is responsible for displaying
+ * the board and pieces, as well as facilitating all of the interactions
+ * between the user (player) and the game, board, pieces, etc.
+ * 
+ * @author Priten Vora
+ *
+ */
 public class GUI implements ActionListener {
 
-	public GUI(Board board) {
+	private Board board;
+
+	public GUI(Board b) {
 		try {
 			UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
 		}
@@ -28,6 +38,7 @@ public class GUI implements ActionListener {
 		window.setContentPane(panel);
 		window.setVisible(true);
 		window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		board = b;
 	}
 
 	private JPanel initializePanel() {
@@ -40,9 +51,9 @@ public class GUI implements ActionListener {
 	private void setUpMenu(JFrame window) {
 		JMenuBar menubar = new JMenuBar();
 		JMenu file = new JMenu("File");
-		JMenuItem open = new JMenuItem("Open");
-		open.addActionListener(this);
-		file.add(open);
+		JMenuItem newGame = new JMenuItem("New Game");
+		newGame.addActionListener(this);
+		file.add(newGame);
 		JMenuItem exit = new JMenuItem("Exit");
 		exit.addActionListener(this);
 		file.add(exit);
@@ -54,6 +65,9 @@ public class GUI implements ActionListener {
 	public void actionPerformed(ActionEvent e) {
 		if(e.getActionCommand() == "Exit") {
 			System.exit(0);
+		}
+		if(e.getActionCommand() == "New Game") {
+			board = new Board(8, 8);
 		}
 	}
 
